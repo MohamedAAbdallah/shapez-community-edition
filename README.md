@@ -16,7 +16,7 @@ CE aims to:
 
 As of now, CE must be built from source and supports only a standalone build,
 with no plans for re-supporting a web version.
-In the future, builds of CE may provided for owners of the full version of shapez.
+In the future, builds of CE may be provided for owners of the full version of shapez.
 
 ## Contributing
 
