@@ -38,6 +38,8 @@ jobs:
                 shapez-ce-builder
                 package.standalone.linux-x64
                 package.standalone.win32-x64
+            - name: Fix artifact permissions
+              run: sudo chown -R "$(id -u):$(id -g)" build_output
             - name: Upload build artifacts
               uses: actions/upload-artifact@v4
               with:
