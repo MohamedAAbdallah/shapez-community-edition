@@ -35,7 +35,8 @@ export async function downloadTexturePacker() {
         throw new Error(`Failed to download Texture Packer: ${response.statusText}`);
     }
 
-    await fs.writeFile(destination, response.body);
+    const buffer = Buffer.from(await response.arrayBuffer());
+    await fs.writeFile(destination, buffer);
 }
 
 export async function createLocalConfig() {
