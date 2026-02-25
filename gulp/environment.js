@@ -1,6 +1,9 @@
 import { exec } from "child_process";
+import { createWriteStream } from "fs";
 import fs from "fs/promises";
 import gulp from "gulp";
+import { Readable } from "stream";
+import { pipeline } from "stream/promises";
 import { promisify } from "util";
 
 const texturePackerUrl =
@@ -35,8 +38,7 @@ export async function downloadTexturePacker() {
         throw new Error(`Failed to download Texture Packer: ${response.statusText}`);
     }
 
-    const buffer = Buffer.from(await response.arrayBuffer());
-    await fs.writeFile(destination, buffer);
+    await pipeline(Readable.fromWeb(response.body), createWriteStream(destination));
 }
 
 export async function createLocalConfig() {
